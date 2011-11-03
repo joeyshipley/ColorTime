@@ -1,0 +1,414 @@
+﻿/* --------------------------------------------------------- *\
+	CSS Reset
+\* --------------------------------------------------------- */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+	margin:0;
+	padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,img { 
+	border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol,ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+
+
+/* --------------------------------------------------------- *\
+	Site Core
+\* --------------------------------------------------------- */
+/* Positioning */
+.relativeblock
+{
+	position: relative;
+	display: block;
+}
+.relativeinlineblock
+{
+	position: relative;
+	display: inline-block;
+}
+.absoluteblock
+{
+	position: absolute;
+	display: block;
+}
+.leftblock
+{
+	float: left;
+	display: block;
+}
+.rightblock
+{
+	float: right;
+	display: block;
+}
+
+/* Effects */
+.boxshadow (@spread: 3px, @color: RGBA(0, 0, 0, 0.5))
+{
+	-moz-box-shadow: 0 0 @spread @spread @color;
+	-webkit-box-shadow: 0 0 @spread @spread @color;
+	box-shadow: 0 0 @spread @spread @color;
+}
+.insetboxshadow (@spread: 3px)
+{
+	-moz-box-shadow: inset 0 0 @spread @spread RGBA(0, 0, 0, 0.3);
+	-webkit-box-shadow: inset 0 0 @spread @spread RGBA(0, 0, 0, 0.3);
+	box-shadow: inset 0 0 @spread @spread RGBA(0, 0, 0, 0.3);
+}
+.borderradius (@TL: 3px, @TR: 3px, @BR: 3px, @BL: 3px)
+{
+	border-radius: @TL @TR @BR @BL;
+	-moz-border-radius: @TL @TR @BR @BL;
+}
+.textshadow (@spread: 3px)
+{
+	text-shadow: 0px 0px @spread RGBA(0, 0, 0, 0.75);
+}
+.pattern-noise
+{
+	background-image: url(../images/pattern_noise.png);
+	background-position: left top;
+	background-repeat: repeat;
+}
+.pattern-stripes
+{
+	background-image: url(../images/pattern_whitestripes.png);
+	background-position: left top;
+	background-repeat: repeat;
+}
+
+
+/* --------------------------------------------------------- *\
+	Color
+\* --------------------------------------------------------- */
+@site_base: RGB(255, 200, 97); /* yellow/orange */
+@site_base-highlight: RGB(255, 228, 178); /* base highlight */
+@site_core: RGB(165, 199, 127); /* green. */
+@site_highlight: RGB(200, 70, 99); /* pink/red */
+@site_shade: RGB(115, 85, 115); /* purple */
+@site_standoff: RGB(70, 83, 129); /* blue */
+@site_error: RGB(116, 16, 16); /* red */
+
+/* --------------------------------------------------------- *\
+	Typography
+\* --------------------------------------------------------- */
+/* Fonts */
+@site_fontfamily: Helvetica, Arial, sans-serif;
+@site_fontfamily-black: "Arial Black", Arial, sans-serif;
+@site_fontsize-small: 0.75em; /* 12px */
+@site_fontsize: 100%; /* 16px */
+@site_fontsize-large: 1.3em; /* 21px */
+@site_fontsize-xlarge: 1.75em; /* 28px */
+@site_fontsize-superlarge: 4em; /* 64px */
+@site_lineheight: 1.5em;
+
+HTML, BODY
+{
+	font-family: @site_fontfamily;
+	font-size: @site_fontsize;
+	line-height: @site_lineheight;
+	background-color: @site_base;
+	color: #333333;
+}
+
+.antialias
+{
+	text-shadow: RGBA(0, 0, 0, 0.75) 0 0 1px; /* Anti-alias hack for some browsers to make the font look better. */
+}
+.antialias-white
+{
+	text-shadow: RGBA(255, 255, 255, 0.75) 0 0 1px; /* Anti-alias hack for some browsers to make the font look better. */
+}
+.textleft
+{
+	text-align: left;
+}
+.textcenter
+{
+	text-align: center;
+}
+.textright
+{
+	text-align: right;
+}
+
+
+/* --------------------------------------------------------- *\
+	Elements
+\* --------------------------------------------------------- */
+H1
+{
+	.relativeblock;
+	margin-bottom: 1em;
+	font-family: @site_fontfamily-black;
+	font-size: @site_fontsize-xlarge;
+	font-weight: bold;
+	color: @site_standoff;
+	line-height: 1.3em;
+}
+H2
+{
+	.relativeblock;
+	font-size: @site_fontsize-large;
+	font-weight: bold;
+	color: #4A4A4A;
+	margin-bottom: 1em;
+}
+H3
+{
+	.relativeblock;
+	font-size: @site_fontsize;
+	font-weight: bold;
+	color: #4A4A4A;
+}
+P
+{
+	.relativeblock;
+	margin: 0 0 1em;
+}
+A
+{
+	color: @site_highlight;
+	font-weight: bold;
+	text-decoration: none;
+}
+A:hover
+{
+	text-decoration: underline;
+}
+
+/* --------------------------------------------------------- *\
+	Layout
+\* --------------------------------------------------------- */
+
+HTML, BODY
+{
+	.pattern-noise;
+}
+
+.noDisplay
+{
+	display: none;
+}
+
+#pageContainer
+{
+	.relativeblock;
+	width: 960px;
+	margin: 0 0 0 -480px;
+	left: 50%;
+
+	HEADER
+	{
+		.relativeblock;
+		padding: 0 10px 2.5em;
+
+		#title
+		{
+			.antialias-white;
+			font-family: @site_fontfamily-black;
+			font-size: @site_fontsize-superlarge;
+			line-height: 2em;
+			color: #FFFFFF;
+		}
+		UL#nav
+		{
+			.absoluteblock;
+			padding: 1em;
+			top: 2.4em;
+			right: 1em;
+			list-style-type: none;
+			background-color: @site_core;
+			.borderradius(15px, 3px, 15px, 3px);
+			border: 1px solid @site_base-highlight;
+			.insetboxshadow(1px);
+			.pattern-stripes;
+
+			LI
+			{
+				.leftblock;
+				margin: 0 6px;
+
+				A
+				{
+					margin: 0px 15px 0px;
+					font-weight: bold;
+					text-transform: lowercase;
+					font-size: @site_fontsize-xlarge;
+					color: #FFFFFF;
+					text-decoration: none;
+					.textshadow(5px);
+				}
+				A:hover
+				{
+					color: @site_base-highlight;
+					border-bottom: 16px solid @site_base-highlight;
+				}
+			}
+		}
+	}
+	SECTION#main
+	{
+		.relativeblock;
+		clear: both;
+		padding: 0 10px;
+	}
+	FOOTER
+	{
+		.relativeblock;
+		padding: 0 10px;
+	}
+}
+
+.panel
+{
+	.relativeinlineblock;
+	padding: 1em;
+	vertical-align: top;
+}
+
+.validationMessage
+{
+	.relativeblock;
+	
+	DIV
+	{
+		.relativeblock;
+		padding: 1em 0.5em;
+		color: @site_error;
+	}
+}
+
+.isDialog
+{
+	.content
+	{
+		.relativeblock;
+
+		INPUT[type=text]
+		{
+			width: 300px;
+			height: 2em;
+			line-height: 2em;
+			font-size: @site_fontsize-large;
+			.textcenter;
+		}
+	}
+	.validationMessage
+	{
+		.relativeblock;
+	}
+	.actions
+	{
+		.relativeblock;
+		margin: 2em 0 0;
+		.textright;
+
+		.primaryAction
+		{
+			margin-right: 0.5em;
+			font-size: @site_fontsize-large;
+			color: @site_standoff;
+		}
+		.secondaryAction
+		{
+			color: @site_shade;
+			font-size: @site_fontsize-small;
+			text-decoration: none;
+		}
+		A:hover
+		{
+			text-decoration: underline;
+		}
+	}
+}
+
+
+/* --------------------------------------------------------- *\
+	Page Specific Styles
+\* --------------------------------------------------------- */
+#homePage
+{
+	.scores
+	{
+		H1 
+		{
+			color: @site_shade;
+		}
+	}
+
+	.uberLinks
+	{
+		.relativeblock;
+		.textcenter;
+
+		A 
+		{
+			.relativeinlineblock;
+			margin: 17px 2% 0;
+			width: 90%;
+			font-size: @site_fontsize-superlarge;
+			font-family: @site_fontfamily-black;
+			line-height: 2em;
+			color: #FFFFFF;
+			font-weight: bold;
+			.textcenter;
+			text-decoration: none;
+			text-transform: uppercase;
+			background-color: #EEEEEE;
+			border: 1px solid #FFFFFF;
+			.boxshadow(1px);
+			.borderradius();
+			.pattern-noise;
+		}
+		A.play
+		{
+			background-color: @site_highlight;
+		}
+	}
+}
+
+/* --------------------------------------------------------- *\
+	Legacy Style Support
+\* --------------------------------------------------------- */
+.no-boxshadow
+{
+	.uberLinks
+	{
+		A
+		{
+			border: 3px double #222222;
+		}
+	}
+}
+.no-borderradius
+{
+	.borderradius
+	{}
+}
+.no-textshadow
+{
+	.textshadow
+	{}
+}
