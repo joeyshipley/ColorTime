@@ -4,13 +4,14 @@ using Color.Core.Application.Repositories;
 using Color.Core.Application.Requests;
 using Color.Core.Application.Responses;
 using Color.Core.Application.Services;
+using Color.Core.Domain;
 using Color.Core.Domain.Entities;
 using Color.Tests.Helpers.Builders;
 using Color.Tests.Infrastructure;
 using Machine.Specifications;
 using Rhino.Mocks;
 
-namespace Color.Tests.Unit
+namespace Color.Tests.Unit.Application
 {
 	[Subject("Application, Color Service, Play Game")]
 	public class when_someone_tries_to_play_the_game_and_we_dont_know_who_the_player_is : BaseSpec<ColorService>
@@ -111,5 +112,79 @@ namespace Color.Tests.Unit
 		};
 
 		It should_create_a_new_player = () => _player.ShouldNotBeNull();
+	}
+
+	[Subject("Application, Color Service, Playing the Game")]
+	public class when_playing_the_game_and_the_player_chooses_the_wrong_color : BaseSpec<ColorService>
+	{
+		private static ColorRoundChoiceResponse _response;
+		private static GameRound _gameRound;
+
+		Establish context = () =>
+		{
+			var player = new PlayerBuilder("player 1").Build();
+			var gameRound = new GameRoundBuilder(player).WithAnswer(Enums.Colors.Purple).Build();
+			var repository = Mocks.Get<IGameRoundRepository>();
+			repository.Stub(r => r.Get(Guid.Empty))
+				.IgnoreArguments()
+				.Return(gameRound);
+			repository.Stub(r => r.Save(null))
+				.Callback((GameRound entity) =>
+				{
+					_gameRound = entity;
+					return true;
+				});
+		};
+
+		Because of = () => 
+		{
+			var request = new ColorRoundChoiceRequest
+			{
+				GameRoundId = Guid.NewGuid(),
+				ProvidedAnswer = Enums.Colors.Blue
+			};
+			_response = Mocks.ClassUnderTest.ColorRoundChoice(request);
+		};
+
+		It should_let_the_player_know_there_choice_was_wrong = () => _response.AttemptIsSuccessful.ShouldBeFalse();
+
+		It should_keep_track_of_the_total_failures = () => (_gameRound.FailedAttempts > 0).ShouldBeTrue();
+	}
+
+	[Subject("Application, Color Service, Playing the Game")]
+	public class when_playing_the_game_and_the_player_chooses_the_right_color : BaseSpec<ColorService>
+	{
+		private static ColorRoundChoiceResponse _response;
+		private static GameRound _gameRound;
+
+		Establish context = () =>
+		{
+			var player = new PlayerBuilder("player 1").Build();
+			var gameRound = new GameRoundBuilder(player).WithAnswer(Enums.Colors.Blue).Build();
+			var repository = Mocks.Get<IGameRoundRepository>();
+			repository.Stub(r => r.Get(Guid.Empty))
+				.IgnoreArguments()
+				.Return(gameRound);
+			repository.Stub(r => r.Save(null))
+				.Callback((GameRound entity) =>
+				{
+					_gameRound = entity;
+					return true;
+				});
+		};
+
+		Because of = () => 
+		{
+			var request = new ColorRoundChoiceRequest
+			{
+				GameRoundId = Guid.NewGuid(),
+				ProvidedAnswer = Enums.Colors.Blue
+			};
+			_response = Mocks.ClassUnderTest.ColorRoundChoice(request);
+		};
+
+		It should_let_the_player_know_they_were_right = () => _response.AttemptIsSuccessful.ShouldBeTrue();
+
+		It should_award_points_to_the_player = () => _gameRound.Score.HasValue.ShouldBeTrue();
 	}
 }

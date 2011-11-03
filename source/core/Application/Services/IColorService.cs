@@ -7,5 +7,7 @@ namespace Color.Core.Application.Services
 	{
 		 PlayViewResponse PlayView(PlayViewRequest request);
 		 NewPlayerSetupResponse NewPlayerSetup(NewPlayerSetupRequest request);
+		 NextColorRoundResponse NextColorRound(NextColorRoundRequest request);
+		 ColorRoundChoiceResponse ColorRoundChoice(ColorRoundChoiceRequest request);
 	}
 }
