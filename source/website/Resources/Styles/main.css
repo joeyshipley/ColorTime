@@ -1,4 +1,4 @@
-﻿/* --------------------------------------------------------- *\
+/* --------------------------------------------------------- *\
 	CSS Reset
 \* --------------------------------------------------------- */
 body,
@@ -105,9 +105,9 @@ abbr, acronym {
 /* --------------------------------------------------------- *\
 	Color
 \* --------------------------------------------------------- */
-/* yellow/orange */
+/* yellow */
 /* base highlight */
-/* green. */
+/* blue */
 /* pink/red */
 /* purple */
 /* blue */
@@ -125,7 +125,7 @@ HTML, BODY {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;
   line-height: 1.5em;
-  background-color: #ffc861;
+  background-color: #fde99b;
   color: #333333;
 }
 .antialias {
@@ -157,7 +157,7 @@ H1 {
   font-family: "Arial Black", Arial, sans-serif;
   font-size: 1.75em;
   font-weight: bold;
-  color: #465381;
+  color: #5895db;
   line-height: 1.3em;
 }
 H2 {
@@ -227,10 +227,10 @@ HTML, BODY {
   top: 2.4em;
   right: 1em;
   list-style-type: none;
-  background-color: #a5c77f;
+  background-color: #a5daf9;
   border-radius: 15px 3px 15px 3px;
   -moz-border-radius: 15px 3px 15px 3px;
-  border: 1px solid #ffe4b2;
+  border: 1px solid white;
   -moz-box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0 0 1px 1px rgba(0, 0, 0, 0.3);
@@ -253,8 +253,8 @@ HTML, BODY {
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
 }
 #pageContainer HEADER UL#nav LI A:hover {
-  color: #ffe4b2;
-  border-bottom: 16px solid #ffe4b2;
+  color: white;
+  border-bottom: 16px solid white;
 }
 #pageContainer SECTION#main {
   position: relative;
@@ -307,7 +307,7 @@ HTML, BODY {
 .isDialog .actions .primaryAction {
   margin-right: 0.5em;
   font-size: 1.3em;
-  color: #465381;
+  color: #5895db;
 }
 .isDialog .actions .secondaryAction {
   color: #735573;
@@ -322,38 +322,6 @@ HTML, BODY {
 \* --------------------------------------------------------- */
 #homePage .scores H1 {
   color: #735573;
-}
-#homePage .uberLinks {
-  position: relative;
-  display: block;
-  text-align: center;
-}
-#homePage .uberLinks A {
-  position: relative;
-  display: inline-block;
-  margin: 17px 2% 0;
-  width: 90%;
-  font-size: 4em;
-  font-family: "Arial Black", Arial, sans-serif;
-  line-height: 2em;
-  color: #FFFFFF;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  background-color: #EEEEEE;
-  border: 1px solid #FFFFFF;
-  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
-  border-radius: 3px 3px 3px 3px;
-  -moz-border-radius: 3px 3px 3px 3px;
-  background-image: url(../images/pattern_noise.png);
-  background-position: left top;
-  background-repeat: repeat;
-}
-#homePage .uberLinks A.play {
-  background-color: #c84663;
 }
 /* --------------------------------------------------------- *\
 	Legacy Style Support

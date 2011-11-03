@@ -102,13 +102,13 @@ abbr,acronym { border:0;
 /* --------------------------------------------------------- *\
 	Color
 \* --------------------------------------------------------- */
-@site_base: RGB(255, 200, 97); /* yellow/orange */
-@site_base-highlight: RGB(255, 228, 178); /* base highlight */
-@site_core: RGB(165, 199, 127); /* green. */
-@site_highlight: RGB(200, 70, 99); /* pink/red */
-@site_shade: RGB(115, 85, 115); /* purple */
-@site_standoff: RGB(70, 83, 129); /* blue */
-@site_error: RGB(116, 16, 16); /* red */
+@site_base: #FDE99B; /* yellow */
+@site_base-highlight: #FFFFFF; /* base highlight */
+@site_core: #A5DAF9; /* blue */
+@site_highlight: #C84663; /* pink/red */
+@site_shade: #735573; /* purple */
+@site_standoff: #5895db; /* blue */
+@site_error: #741010; /* red */
 
 /* --------------------------------------------------------- *\
 	Typography
@@ -355,36 +355,6 @@ HTML, BODY
 		H1 
 		{
 			color: @site_shade;
-		}
-	}
-
-	.uberLinks
-	{
-		.relativeblock;
-		.textcenter;
-
-		A 
-		{
-			.relativeinlineblock;
-			margin: 17px 2% 0;
-			width: 90%;
-			font-size: @site_fontsize-superlarge;
-			font-family: @site_fontfamily-black;
-			line-height: 2em;
-			color: #FFFFFF;
-			font-weight: bold;
-			.textcenter;
-			text-decoration: none;
-			text-transform: uppercase;
-			background-color: #EEEEEE;
-			border: 1px solid #FFFFFF;
-			.boxshadow(1px);
-			.borderradius();
-			.pattern-noise;
-		}
-		A.play
-		{
-			background-color: @site_highlight;
 		}
 	}
 }
