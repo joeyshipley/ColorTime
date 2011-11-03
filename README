@@ -1,0 +1,19 @@
+This is a simple app that will ultimately allow my 2 year old to learn her colors. 
+That and it serves as an example of my work, so hold onto your seat, it's a work 
+in progress.
+
+The bits and parts: 
+
+ASP.Net MVC, C#
+StructureMap
+Machine.Specification
+Rhino Mocks
+LINQ
+NHibernate
+Fluent NHibernate 
+HTML5 elements
+CSS3
+lessCSS
+Class based JavaScript
+JQuery
+AJax
