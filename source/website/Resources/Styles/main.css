@@ -209,7 +209,11 @@ HTML, BODY {
 #pageContainer HEADER {
   position: relative;
   display: block;
-  padding: 0 10px 2.5em;
+  padding: 0 10px;
+  margin: 0 0 2em;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 0px 0px 15px 15px;
+  -moz-border-radius: 0px 0px 15px 15px;
 }
 #pageContainer HEADER #title {
   text-shadow: rgba(255, 255, 255, 0.75) 0 0 1px;

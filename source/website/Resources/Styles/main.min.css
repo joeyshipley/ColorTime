@@ -29,7 +29,7 @@ A:hover{text-decoration:underline}
 HTML,BODY{background-image:url(../images/pattern_noise.png);background-position:left top;background-repeat:repeat}
 .noDisplay{display:none}
 #pageContainer{position:relative;display:block;width:960px;margin:0 0 0 -480px;left:50%}
-#pageContainer HEADER{position:relative;display:block;padding:0 10px 2.5em}
+#pageContainer HEADER{position:relative;display:block;padding:0 10px;margin:0 0 2em;background-color:rgba(0,0,0,0.05);border-radius:0 0 15px 15px;-moz-border-radius:0 0 15px 15px}
 #pageContainer HEADER #title{text-shadow:rgba(255,255,255,0.75) 0 0 1px;font-family:"Arial Black",Arial,sans-serif;font-size:4em;line-height:2em;color:#FFF}
 #pageContainer HEADER UL#nav{position:absolute;display:block;padding:1em;top:2.4em;right:1em;list-style-type:none;background-color:#a5daf9;border-radius:15px 3px 15px 3px;-moz-border-radius:15px 3px 15px 3px;border:1px solid white;-moz-box-shadow:inset 0 0 1px 1px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0 0 1px 1px rgba(0,0,0,0.3);box-shadow:inset 0 0 1px 1px rgba(0,0,0,0.3);background-image:url(../images/pattern_whitestripes.png);background-position:left top;background-repeat:repeat}
 #pageContainer HEADER UL#nav LI{float:left;display:block;margin:0 6px}
