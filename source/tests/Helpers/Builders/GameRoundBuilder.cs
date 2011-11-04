@@ -10,6 +10,7 @@ namespace Color.Tests.Helpers.Builders
 		private Player _player;
 		private Enums.Colors? _answer;
 		private int? _failedAttempts;
+		private int? _score;
 		
 		public GameRoundBuilder(Player player)
 		{
@@ -34,6 +35,12 @@ namespace Color.Tests.Helpers.Builders
 			return this;
 		}
 
+		public GameRoundBuilder WithScore(int value)
+		{
+			_score = value;
+			return this;
+		}
+
 		public GameRound Build()
 		{
 			var gameRound = GameRound.CreateNewGameRoundFor(_player);
@@ -44,6 +51,8 @@ namespace Color.Tests.Helpers.Builders
 
 			if(_answer.HasValue)
 				gameRound.Answer = _answer.Value;
+			if(_score.HasValue)
+				gameRound.Score = _score;
 
 			if(_id.HasValue)
 				gameRound.SetId(_id.Value);

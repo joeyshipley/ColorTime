@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Color.Core.Domain.Infrastructure;
 
 namespace Color.Core.Domain.Entities
@@ -6,6 +7,7 @@ namespace Color.Core.Domain.Entities
 	public class Player : BaseEntity
 	{
 		private string _name;
+		private IList<GameRound> _gameRounds;
 
 		public virtual string Name
 		{
@@ -13,8 +15,17 @@ namespace Color.Core.Domain.Entities
 			private set { _name = value; }
 		}
 
-		// TODO: setup a score value.
-		// TODO: provide a way to update the players score.
+		public virtual IList<GameRound> GameRounds
+		{
+			get { return _gameRounds ?? (_gameRounds = new List<GameRound>()); }
+			internal set { _gameRounds = value; }
+		}
+
+		public int CalculateScore()
+		{
+			var score = GameRounds.Sum(g => g.Score != null ? g.Score.Value : 0);
+			return score;
+		}
 
 		public static IEnumerable<ValidationError> ValidateNewPlayer(PlayerCreateCommand command)
 		{

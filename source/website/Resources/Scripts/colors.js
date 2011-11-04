@@ -37,6 +37,7 @@ CORE.UI.Color.GameRound = function () {
 			function (result) {
 				if(result.Data.AttemptIsSuccessful) {
 					_actions.displayWinningMessage();
+					_actions.updateScoreDisplay();
 				} else {
 					element.attr("class", "invalid").unbind();
 				}
@@ -137,7 +138,8 @@ CORE.UI.Color.Controller = function () {
 						_elements.gameRoundElements, 
 						_settings.urls.gameRoundUrls,
 						{
-							displayWinningMessage: displayWinningMessage
+							displayWinningMessage: displayWinningMessage,
+							updateScoreDisplay: updateScoreDisplay
 						}
 					);
 					_gameRound.draw();
@@ -202,5 +204,13 @@ CORE.UI.Color.Controller = function () {
 			}
 		});
 	}
-};
 
+	function updateScoreDisplay() {
+		CORE.ajax.post(_settings.urls.displayScore,
+			{ PlayerId: _settings.playerId },
+			function (result) {
+				_elements.scoreBoardScore.html(result.Data.Score);
+			}, {}
+		);
+	}
+};

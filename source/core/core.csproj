@@ -65,11 +65,13 @@
     <Compile Include="Application\Repositories\IGameRoundRepository.cs" />
     <Compile Include="Application\Repositories\IPlayerRepository.cs" />
     <Compile Include="Application\Requests\ColorRoundChoiceRequest.cs" />
+    <Compile Include="Application\Requests\DisplayScoreRequest.cs" />
     <Compile Include="Application\Requests\NewPlayerSetupRequest.cs" />
     <Compile Include="Application\Requests\NextColorRoundRequest.cs" />
     <Compile Include="Application\Requests\PlayViewRequest.cs" />
     <Compile Include="Application\Infrastructure\IDependencyProvider.cs" />
     <Compile Include="Application\Responses\ColorRoundChoiceResponse.cs" />
+    <Compile Include="Application\Responses\DisplayScoreResponse.cs" />
     <Compile Include="Application\Responses\NewPlayerSetupResponse.cs" />
     <Compile Include="Application\Responses\NextColorRoundResponse.cs" />
     <Compile Include="Application\Responses\PlayViewResponse.cs" />

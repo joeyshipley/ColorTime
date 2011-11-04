@@ -53,6 +53,7 @@ namespace Color.Core.Domain.Entities
 		public virtual int? Score
 		{
 			get { return _score; }
+			internal set { _score = value; }
 		}
 
 		public IEnumerable<Enums.Colors> GetChoices()

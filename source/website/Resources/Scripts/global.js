@@ -146,4 +146,4 @@ CORE.Util.formatValidationMessage = function (errors) {
 
 CORE.Util.random = function (range) {
 	return Math.round(Math.random() * (range - 1)) + 1;
-}
+};

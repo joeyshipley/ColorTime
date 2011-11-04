@@ -5,9 +5,10 @@ namespace Color.Core.Application.Services
 {
 	public interface IColorService
 	{
-		 PlayViewResponse PlayView(PlayViewRequest request);
-		 NewPlayerSetupResponse NewPlayerSetup(NewPlayerSetupRequest request);
-		 NextColorRoundResponse NextColorRound(NextColorRoundRequest request);
-		 ColorRoundChoiceResponse ColorRoundChoice(ColorRoundChoiceRequest request);
+		PlayViewResponse PlayView(PlayViewRequest request);
+		NewPlayerSetupResponse NewPlayerSetup(NewPlayerSetupRequest request);
+		NextColorRoundResponse NextColorRound(NextColorRoundRequest request);
+		ColorRoundChoiceResponse ColorRoundChoice(ColorRoundChoiceRequest request);
+		DisplayScoreResponse DisplayScore(DisplayScoreRequest request);
 	}
 }

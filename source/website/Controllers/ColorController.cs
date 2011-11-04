@@ -80,5 +80,20 @@ namespace Color.Website.Controllers
 				return JsonResult.CreateFailure(ex.Message, ex);
 			}
 		}
+
+		[AcceptVerbs(HttpVerbs.Post)]
+		public JsonResult DisplayScore(DisplayScoreRequest request)
+		{
+			try
+			{
+				var response = _colorService.DisplayScore(request);
+				var model = _colorModelFactory.CreateDisplayScoreModel(response);
+				return JsonResult.CreateSuccess(model);
+			}
+			catch (Exception ex)
+			{
+				return JsonResult.CreateFailure(ex.Message, ex);
+			}
+		}
 	}
 }

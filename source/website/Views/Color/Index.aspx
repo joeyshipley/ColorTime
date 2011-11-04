@@ -21,7 +21,7 @@
 		</div>
 		<div class="textright">
 			<label>Your Score</label>
-			<span class="score">0</span>
+			<span class="score"><%= Model.Score %></span>
 		</div>
 	</section>
 
@@ -85,6 +85,7 @@
 					provideInformationView: "<%= Html.BuildUrlFromExpression<ColorController>(c => c.NewPlayerSetup()) %>",
 					provideInformationSave: "<%= Html.BuildUrlFromExpression<ColorController>(c => c.NewPlayerSetup(null)) %>",
 					getNextColor: "<%= Html.BuildUrlFromExpression<ColorController>(c => c.NextColorRound(null)) %>",
+					displayScore: "<%= Html.BuildUrlFromExpression<ColorController>(c => c.DisplayScore(null)) %>",
 					gameRoundUrls: {
 						submitColorChoise: "<%= Html.BuildUrlFromExpression<ColorController>(c => c.ColorRoundChoice(null)) %>"
 					}

@@ -92,6 +92,7 @@
     <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />
     <Compile Include="Models\ColorModelFactory.cs" />
     <Compile Include="Models\ColorRoundChoiceModel.cs" />
+    <Compile Include="Models\DisplayScoreModel.cs" />
     <Compile Include="Models\NewPlayerSetupModel.cs" />
     <Compile Include="Models\NextColorRoundModel.cs" />
     <Compile Include="Models\PlayViewModel.cs" />

@@ -13,6 +13,7 @@ namespace Color.Website.Models
 			{
 				PlayerId = response.PlayerId,
 				PlayerName = response.PlayerName,
+				Score = response.Score.ToString(),
 				RequestPlayerInfo = response.RequestPlayerInfo,
 				CanPlayGame = response.CanPlayGame
 			};
@@ -42,6 +43,14 @@ namespace Color.Website.Models
 			return new ColorRoundChoiceModel
 			{
 				AttemptIsSuccessful = response.AttemptIsSuccessful
+			};
+		}
+
+		public DisplayScoreModel CreateDisplayScoreModel(DisplayScoreResponse response)
+		{
+			return new DisplayScoreModel
+			{
+				Score = response.Score
 			};
 		}
 	}

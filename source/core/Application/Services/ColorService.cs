@@ -36,6 +36,7 @@ namespace Color.Core.Application.Services
 			{
 				PlayerId = player.Id,
 				PlayerName = player.Name,
+				Score = player.CalculateScore(),
 				CanPlayGame = true,
 				RequestPlayerInfo = false
 			};
@@ -70,7 +71,8 @@ namespace Color.Core.Application.Services
 			var gameRound = GameRound.CreateNewGameRoundFor(player);
 			using(var uow = _unitOfWorkFactory.BeginTransaction())
 			{
-				_gameRoundRepository.Save(gameRound);
+				player.GameRounds.Add(gameRound);
+				_playerRepository.Save(player);
 				uow.Commit();
 			}
 			
@@ -103,6 +105,15 @@ namespace Color.Core.Application.Services
 			return new ColorRoundChoiceResponse
 			{
 				AttemptIsSuccessful = success
+			};
+		}
+
+		public DisplayScoreResponse DisplayScore(DisplayScoreRequest request)
+		{
+			var player = _playerRepository.Get(request.PlayerId);
+			return new DisplayScoreResponse
+			{
+				Score = player.CalculateScore()
 			};
 		}
 	}

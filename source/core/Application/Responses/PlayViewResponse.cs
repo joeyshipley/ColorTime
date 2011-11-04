@@ -6,6 +6,7 @@ namespace Color.Core.Application.Responses
 	{
 		public Guid? PlayerId { get; set; } 
 		public string PlayerName { get; set; }
+		public int? Score { get; set; }
 		public bool RequestPlayerInfo { get; set; }
 		public bool CanPlayGame { get; set; }
 	}
