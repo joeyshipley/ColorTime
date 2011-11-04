@@ -27,9 +27,9 @@
 	<section class="panel left">
 		<h1>Welcome Color Connoisseur!</h1>
 		<h3>Feeling a bit of the ol'Color Confusion?</h3>
-		<p>Have you ever thought to yourself "Gee, I would love to know that color is," or perhaps "That color is amazing, its a shame I haven't a clue to what it is." Well, you're in luck! Here at Coloriful&trade;&reg;&copy; we pride ourselves in our vast knowledge of primary and secondary colors alike!</p>
+		<p>Have you ever thought to yourself, "Gee, I would love to know that color is," or perhaps "That color is amazing, it's a shame I haven't a clue to what it is." Well, you're in luck! Here at Coloriful&trade;&reg;&copy; we pride ourselves in our vast knowledge of primary and secondary colors!</p>
 		<h3>Well, Step Right Up!</h3>
-		<p>You with your inexcuseable lack of color correctness, and us the masters of all things color, are a perfect fit. Take a deep breath, relax, and enjoy the moment. Once you start playing, it'll be one emotional roller coaster you can't stop!</p>
+		<p>You, with your inexcuseable lack of color correctness, and we, the masters of all things color, are a perfect fit. Take a deep breath, relax, and enjoy the moment. Once you start playing, it'll be one emotional roller coaster you can't stop!</p>
 		<h3>
 			<a class="play" href="<%: Html.BuildUrlFromExpression<ColorController>(c => c.View(null)) %>">Let's Play &raquo;</a>
 		</h3>

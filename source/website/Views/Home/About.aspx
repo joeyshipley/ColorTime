@@ -45,7 +45,7 @@
 			</ul>
 		</div>
 		<h2>Ok, but...</h2>
-		<p>Now I know what you're thinking, no way, right? Well here, just poke around under the hood. You never know, might end up liking it.</p>
+		<p>Now, I know what you're thinking; no way, right? Well, just poke around under the hood. You never know, you might end up liking it.</p>
 		<p><a href="https://github.com/joeyshipley/ColorTime" target="_blank">ColorTime</a> on GitHub.com</p>
 	</section>
 </asp:Content>
