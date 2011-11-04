@@ -7,7 +7,7 @@ namespace Color.Core.Data.Infrastructure
 	{
 		IQueryable<T> GetAll();
 		T Get(Guid id);
-		void Save(T player);
-		void Delete(T player);
+		void Save(T entity);
+		void Delete(T entity);
 	}
 }

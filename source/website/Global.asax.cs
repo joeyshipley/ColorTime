@@ -5,8 +5,8 @@ using Color.Core.Application.Repositories;
 using Color.Core.Application.Services;
 using Color.Core.Data.Infrastructure;
 using Color.Core.Data.Repositories;
+using Color.Website.Infrastructure;
 using StructureMap;
-using website.Infrastructure;
 
 namespace Color.Website
 {

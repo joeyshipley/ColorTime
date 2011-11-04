@@ -28,14 +28,14 @@ namespace Color.Core.Data.Infrastructure
 			return GetAll().SingleOrDefault(p => p.Id == id);
 		}
 
-		public void Save(T player)
+		public void Save(T entity)
 		{
-			_session.Save(player);
+			_session.Save(entity);
 		}
 
-		public void Delete(T player)
+		public void Delete(T entity)
 		{
-			_session.Delete(player);
+			_session.Delete(entity);
 		}
 	}
 }

@@ -22,13 +22,13 @@ CORE.UI.Color.GameRound = function () {
 		var randomIndexOrders = randomizeIndexOrder();
 		_elements.colorChoice1.attr("class", "")
 			.addClass(_choices[randomIndexOrders.first])
-			.bind(Global.eventName, function () { chooseColor($(this).attr("class"), $(this)); });
+			.bind(Global.inputEventName, function () { chooseColor($(this).attr("class"), $(this)); });
 		_elements.colorChoice2.attr("class", "")
 			.addClass(_choices[randomIndexOrders.second])
-			.bind(Global.eventName, function () { chooseColor($(this).attr("class"), $(this)); });
+			.bind(Global.inputEventName, function () { chooseColor($(this).attr("class"), $(this)); });
 		_elements.colorChoice3.attr("class", "")
 			.addClass(_choices[randomIndexOrders.third])
-			.bind(Global.eventName, function () { chooseColor($(this).attr("class"), $(this)); });
+			.bind(Global.inputEventName, function () { chooseColor($(this).attr("class"), $(this)); });
 	};
 
 	function chooseColor(color, element) {
@@ -115,11 +115,11 @@ CORE.UI.Color.Controller = function () {
 				height: 250,
 				width: 500,
 				open: function (container) {
-					$(".actions .play", container).bind(Global.eventName, function () {
+					$(".actions .play", container).bind(Global.inputEventName, function () {
 						sendPlayerInformation(container);
 						return false;
 					});
-					$(".actions .cancel", container).bind(Global.eventName, function () {
+					$(".actions .cancel", container).bind(Global.inputEventName, function () {
 						// TODO: implement playing as guest instead of sending home.
 						document.location = _settings.urls.home;
 						return false;
@@ -189,12 +189,12 @@ CORE.UI.Color.Controller = function () {
 			height: 200,
 			width: 350,
 			open: function (container) {
-				$(".actions .play", container).bind(Global.eventName, function () {
+				$(".actions .play", container).bind(Global.inputEventName, function () {
 					var url = _settings.urls.play += "?playerId=" + _settings.playerId;
 					document.location = url;
 					return false;
 				});
-				$(".actions .quit", container).bind(Global.eventName, function () {
+				$(".actions .quit", container).bind(Global.inputEventName, function () {
 					document.location = _settings.urls.home;
 					return false;
 				});

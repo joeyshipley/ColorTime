@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using StructureMap;
 
-namespace website.Infrastructure
+namespace Color.Website.Infrastructure
 {
 	public class StructureMapDependencyResolver : IDependencyResolver
 	{

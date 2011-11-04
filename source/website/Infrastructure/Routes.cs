@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace website.Infrastructure
+namespace Color.Website.Infrastructure
 {
 	public static class Routes
 	{

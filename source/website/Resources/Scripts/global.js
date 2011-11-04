@@ -1,13 +1,13 @@
 ﻿var Global = {};
 
-Global.eventName = "";
-// Use: _elements.actionLink.bind(Global.eventName, function () { alert("rawr"); });
+Global.inputEventName = "";
+// Use: _elements.actionLink.bind(Global.inputEventName, function () { alert("rawr"); });
 
 Global.init = function (options) {
 	try {
 		var settings = $.extend({}, options);
 
-		Global.eventName = ("createTouch" in document) ? "touchend" : "click";
+		Global.inputEventName = ("createTouch" in document) ? "touchend" : "click";
 
 		$.ajaxSetup({
 			cache: false,
@@ -17,6 +17,11 @@ Global.init = function (options) {
 					throw new Error("There was an error making an ajax request to " + this.url + "\r\nHTTP Status: " + xmlHttpRequest.status + " " + xmlHttpRequest.statusText);
 				}
 			}
+		});
+
+		// NOTE: stop enterkey for now, until I can look into the modal firing off the ajax call as a standard form submit.
+		$("BODY").bind("keypress", function (e) {
+			if (e.keyCode == 13) { return false; }
 		});
 	} catch (ex) {
 		// TODO: fire error logging

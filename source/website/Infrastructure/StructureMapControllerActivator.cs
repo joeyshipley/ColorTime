@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using StructureMap;
 
-namespace website.Infrastructure
+namespace Color.Website.Infrastructure
 {
 	public class StructureMapControllerActivator : IControllerActivator
 	{
