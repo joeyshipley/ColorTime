@@ -50,5 +50,35 @@ namespace Color.Website.Controllers
 				return JsonResult.CreateFailure(ex.Message, ex);
 			}
 		}
+
+		[AcceptVerbs(HttpVerbs.Post)]
+		public JsonResult NextColorRound(NextColorRoundRequest request)
+		{
+			try
+			{
+				var response = _colorService.NextColorRound(request);
+				var model = _colorModelFactory.CreateNextColorRoundModel(response);
+				return JsonResult.CreateSuccess(model);
+			}
+			catch (Exception ex)
+			{
+				return JsonResult.CreateFailure(ex.Message, ex);
+			}
+		}
+
+		[AcceptVerbs(HttpVerbs.Post)]
+		public JsonResult ColorRoundChoice(ColorRoundChoiceRequest request)
+		{
+			try
+			{
+				var response = _colorService.ColorRoundChoice(request);
+				var model = _colorModelFactory.CreateColorRoundChoiceModel(response);
+				return JsonResult.CreateSuccess(model);
+			}
+			catch (Exception ex)
+			{
+				return JsonResult.CreateFailure(ex.Message, ex);
+			}
+		}
 	}
 }

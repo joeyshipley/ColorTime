@@ -57,7 +57,9 @@ namespace Color.Website
 
 				// Application
 				c.For<IPlayerRepository>().Use<PlayerRepository>();
+				c.For<IGameRoundRepository>().Use<GameRoundRepository>();
 				c.For<IColorService>().Use<ColorService>();
+				c.For<IGameRoundScorerSpecification>().Use<GameRoundScorerSpecification>();
 			});
 			DependencyResolver.SetResolver(new StructureMapDependencyResolver(container));
 		}

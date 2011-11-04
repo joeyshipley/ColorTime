@@ -1,10 +1,101 @@
 ﻿CORE.UI.Color = {};
 
+CORE.UI.Color.GameRound = function () {
+	var _gameRoundId;
+	var _answer;
+	var _choices;
+	var _elements;
+	var _urls;
+	var _actions;
+
+	this.init = function (data, elements, urls, actions) {
+		_gameRoundId = data.GameRoundId;
+		_answer = data.Answer;
+		_choices = data.Choices;
+		_elements = elements;
+		_urls = urls;
+		_actions = actions;
+	};
+
+	this.draw = function () {
+		_elements.currentColor.html(_answer);
+		var randomIndexOrders = randomizeIndexOrder();
+		_elements.colorChoice1.attr("class", "")
+			.addClass(_choices[randomIndexOrders.first])
+			.bind(Global.eventName, function () { chooseColor($(this).attr("class"), $(this)); });
+		_elements.colorChoice2.attr("class", "")
+			.addClass(_choices[randomIndexOrders.second])
+			.bind(Global.eventName, function () { chooseColor($(this).attr("class"), $(this)); });
+		_elements.colorChoice3.attr("class", "")
+			.addClass(_choices[randomIndexOrders.third])
+			.bind(Global.eventName, function () { chooseColor($(this).attr("class"), $(this)); });
+	};
+
+	function chooseColor(color, element) {
+		CORE.ajax.post(_urls.submitColorChoise,
+			{ GameRoundId: _gameRoundId, ProvidedAnswer: color },
+			function (result) {
+				if(result.Data.AttemptIsSuccessful) {
+					_actions.displayWinningMessage();
+				} else {
+					element.attr("class", "invalid").unbind();
+				}
+			}, {}
+		);
+	}
+
+	function randomizeIndexOrder()
+	{
+		var firstColorIndex = CORE.Util.random(3);
+		var secondColorIndex = 0;
+		var thirdColorIndex = 0;
+		var secondSwitch = CORE.Util.random(2);
+
+		switch (firstColorIndex)
+		{
+			case 1:
+				if(secondSwitch === 1) {
+					secondColorIndex = 2;
+					thirdColorIndex = 3;
+				} else {
+					secondColorIndex = 3;
+					thirdColorIndex = 2;
+				}
+			break;
+			case 2:
+				if(secondSwitch === 1) {
+					secondColorIndex = 1;
+					thirdColorIndex = 3;
+				} else {
+					secondColorIndex = 3;
+					thirdColorIndex = 1;
+				}
+			break;
+			case 3:
+				if(secondSwitch === 1) {
+					secondColorIndex = 1;
+					thirdColorIndex = 2;
+				} else {
+					secondColorIndex = 2;
+					thirdColorIndex = 1;
+				}
+			break;
+		}
+
+		return {
+			first: firstColorIndex - 1,
+			second: secondColorIndex - 1,
+			third: thirdColorIndex - 1
+		};
+	}
+};
+
 CORE.UI.Color.Controller = function () {
 	var _elements;
 	var _settings;
 	var _dialog;
 	var _state;
+	var _gameRound;
 
 	this.init = function (elements, options) {
 		_elements = elements;
@@ -37,6 +128,22 @@ CORE.UI.Color.Controller = function () {
 					container.remove();
 				}
 			});
+		} else if (_state === "canPlayGame") {
+			CORE.ajax.post(_settings.urls.getNextColor,
+				{ PlayerId: _settings.playerId },
+				function (result) {
+					_gameRound = new CORE.UI.Color.GameRound();
+					_gameRound.init(result.Data, 
+						_elements.gameRoundElements, 
+						_settings.urls.gameRoundUrls,
+						{
+							displayWinningMessage: displayWinningMessage
+						}
+					);
+					_gameRound.draw();
+				}, {
+				}
+			);
 		}
 	};
 
@@ -66,9 +173,34 @@ CORE.UI.Color.Controller = function () {
 		var state = "";
 		if (_settings.requestPlayerInfo) {
 			state = "requestPlayerInfo";
-		} else if (_settings.CanPlayGame) {
+		} else if (_settings.canPlayGame) {
 			state = "canPlayGame";
 		}
 		return state;
 	}
+
+	function displayWinningMessage() {
+		var content = _elements.youWinContentElement.html();
+		_dialog.show({
+			title: "Hooray!",
+			content: content,
+			height: 200,
+			width: 350,
+			open: function (container) {
+				$(".actions .play", container).bind(Global.eventName, function () {
+					var url = _settings.urls.play += "?playerId=" + _settings.playerId;
+					document.location = url;
+					return false;
+				});
+				$(".actions .quit", container).bind(Global.eventName, function () {
+					document.location = _settings.urls.home;
+					return false;
+				});
+			},
+			close: function (container) {
+				container.remove();
+			}
+		});
+	}
 };
+

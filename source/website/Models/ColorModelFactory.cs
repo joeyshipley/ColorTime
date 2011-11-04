@@ -1,4 +1,5 @@
-﻿using Color.Core.Application.Responses;
+﻿using System.Linq;
+using Color.Core.Application.Responses;
 
 namespace Color.Website.Models
 {
@@ -23,6 +24,24 @@ namespace Color.Website.Models
 			{
 				PlayerId = response.PlayerId.ToString(),
 				Name = response.Name
+			};
+		}
+
+		public NextColorRoundModel CreateNextColorRoundModel(NextColorRoundResponse response)
+		{
+			return new NextColorRoundModel
+			{
+				GameRoundId = response.GameRoundId.ToString(),
+				Answer = response.Answer.ToString(),
+				Choices = response.Choices.Select(c => c.ToString())
+			};
+		}
+
+		public ColorRoundChoiceModel CreateColorRoundChoiceModel(ColorRoundChoiceResponse response)
+		{
+			return new ColorRoundChoiceModel
+			{
+				AttemptIsSuccessful = response.AttemptIsSuccessful
 			};
 		}
 	}

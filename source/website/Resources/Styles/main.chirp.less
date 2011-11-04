@@ -325,6 +325,10 @@ HTML, BODY
 		margin: 2em 0 0;
 		.textright;
 
+		&.textcenter
+		{
+			text-align: center;
+		}
 		.primaryAction
 		{
 			margin-right: 0.5em;
@@ -336,6 +340,18 @@ HTML, BODY
 			color: @site_shade;
 			font-size: @site_fontsize-small;
 			text-decoration: none;
+		}
+		.specialAction
+		{
+			margin: 0 0.75em;
+			font-size: @site_fontsize-xlarge;
+			color: @site_highlight;
+			
+			&.smaller
+			{
+				color: #999999;
+				font-size: @site_fontsize-large;
+			}
 		}
 		A:hover
 		{
@@ -359,17 +375,118 @@ HTML, BODY
 	}
 }
 
+#colorGame
+{
+	.scoreBoard
+	{
+		.relativeblock;
+
+		DIV
+		{
+			.relativeinlineblock;
+			width: 49%;
+			margin-bottom: 1em;
+		}
+		LABEL
+		{
+			.relativeblock;
+			font-weight: bold;
+		}
+		.displayName
+		{
+			line-height: 1.1em;
+			font-size: @site_fontsize-superlarge;
+		}
+		.score 
+		{
+			line-height: 1.1em;
+			font-size: @site_fontsize-superlarge;
+		}
+	}
+
+	.pickThisColor
+	{
+		.relativeblock;
+		margin-top: -55px;
+
+		.message
+		{
+			.relativeblock;
+			.textcenter;
+			font-size: @site_fontsize-large;
+		}
+		#currentColor
+		{
+			.relativeblock;
+			.textcenter;
+			font-family: @site_fontfamily-black;
+			font-size: @site_fontsize-superlarge;
+			.antialias;
+			line-height: 1em;
+		}
+	}
+
+	.colorCards
+	{
+		.relativeblock;
+		margin-top: 3em;
+		.textcenter;
+
+		DIV
+		{
+			.relativeinlineblock;
+			margin: 0 1%;
+			width: 30%;
+			height: 250px;
+			border: 1px solid #FFFFFF;
+			.boxshadow(1px);
+			.pattern-noise;
+			cursor: pointer;
+
+			&.Blue
+			{
+				background-color: blue;
+			}
+			&.Green
+			{
+				background-color: green;
+			}
+			&.Yellow
+			{
+				background-color: yellow;
+			}
+			&.Orange
+			{
+				background-color: orange;
+			}
+			&.Red
+			{
+				background-color: red;
+			}
+			&.Purple
+			{
+				background-color: purple;
+			}
+			&.invalid
+			{
+				cursor: default;
+				background-color: #CFCFCF;
+				border: 1px solid #FFFFFF;
+				.insetboxshadow(1px);
+			}
+		}
+	}
+}
+
+
 /* --------------------------------------------------------- *\
 	Legacy Style Support
 \* --------------------------------------------------------- */
 .no-boxshadow
 {
-	.uberLinks
+	.boxshadow
 	{
-		A
-		{
-			border: 3px double #222222;
-		}
+		border: 1px solid #666666;
 	}
 }
 .no-borderradius
@@ -381,4 +498,13 @@ HTML, BODY
 {
 	.textshadow
 	{}
+}
+
+
+/* --------------------------------------------------------- *\
+	JQuery UI overrides
+\* --------------------------------------------------------- */
+.ui-dialog-titlebar-close 
+{
+	.noDisplay;
 }

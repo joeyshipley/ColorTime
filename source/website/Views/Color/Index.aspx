@@ -4,36 +4,49 @@
 	Color Time!
 </asp:Content>
 
+<asp:Content ContentPlaceHolderID="InlineStyles" runat="server">
+	<style type="text/css">
+	</style>
+</asp:Content>
+
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
+<div id="colorGame">
 	<% Html.BeginForm<ColorController>(c => c.View(null)); %> <!-- TODO: post to a play action instead. -->
 	<%= Html.Hidden("PlayerId") %>
 
 	<section class="scoreBoard">
-		<div class="displayName"><%= Model.PlayerName %></div>
-		<div class="score">0</div>
+		<div>
+			<label>Player</label>
+			<span class="displayName"><%= Model.PlayerName %></span>
+		</div>
+		<div class="textright">
+			<label>Your Score</label>
+			<span class="score">0</span>
+		</div>
 	</section>
 
-	<h2>Hey! I'm the color <span id="currentColor">Red</span>! Which one am I?</h2>
+	<section class="pickThisColor">
+		<span class="message">Can you find the color</span>
+		<span id="currentColor">&nbsp;</span>
+	</section>
 
-	<div id="color1" class="colorCard"></div>
-	<div id="color2" class="colorCard"></div>
-	<div id="color3" class="colorCard"></div>
+	<section class="colorCards">
+		<div id="color1"></div>
+		<div id="color2"></div>
+		<div id="color3"></div>
+	</section>
 
-	<div id="newPlayerGreeting" class="noDisplay">
-		<div class="modal">
-			<h1>Welcome to Coloriful!</h1>
-			<p>Sorry, but we don't know who you are yet. Go ahead and give us your name so we can tally your score as you play!</p>
-			<div>
-				<input type="text" id="name" name="name" />
-			</div>
-			<div class="validationMessage">
-			</div>
-			<div class="actions">
-				<a href="#" class="play primaryAction">Play</a>
-			</div>
+	<div id="youWin" class="noDisplay">
+		<div class="content">
+			<h1>You're Right!</h1>
+		</div>
+		<div class="actions textcenter">
+			<a href="#" class="play specialAction">Play Again</a>
+			<a href="#" class="quit specialAction smaller">Quit</a>
 		</div>
 	</div>
 	<% Html.EndForm(); %>
+</div>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="ExtendedJavascriptIncludes" runat="server">
@@ -53,7 +66,14 @@
 				selectors: {
 					modalValidationMessage: ".validationMessage",
 					modalActionsPlay: ".actions .play"
-				}
+				},
+				gameRoundElements: {
+					currentColor: $("#currentColor"),
+					colorChoice1: $("#color1"),
+					colorChoice2: $("#color2"),
+					colorChoice3: $("#color3")
+				},
+				youWinContentElement: $("#youWin")
 			};
 			var options = {
 				playerId: "<%= Model.PlayerId %>",
@@ -64,8 +84,10 @@
 					play: "<%= Html.BuildUrlFromExpression<ColorController>(c => c.View(null)) %>",
 					provideInformationView: "<%= Html.BuildUrlFromExpression<ColorController>(c => c.NewPlayerSetup()) %>",
 					provideInformationSave: "<%= Html.BuildUrlFromExpression<ColorController>(c => c.NewPlayerSetup(null)) %>",
-					getNextColor: "",
-					submitColorChoise: ""
+					getNextColor: "<%= Html.BuildUrlFromExpression<ColorController>(c => c.NextColorRound(null)) %>",
+					gameRoundUrls: {
+						submitColorChoise: "<%= Html.BuildUrlFromExpression<ColorController>(c => c.ColorRoundChoice(null)) %>"
+					}
 				}
 			};
 			_controller.init(elements, options);

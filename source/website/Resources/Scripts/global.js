@@ -118,6 +118,8 @@ CORE.UI.dialog = function () {
 							},
 							error: function(xhr, status) { _element = _element.html("<h1>Failed to load!</h1><div>" + status + "</div>"); }
 						});
+					} else {
+						if (settings.open !== undefined) { settings.open(_element); }
 					}
 				},
 				close: function () {
@@ -141,3 +143,7 @@ CORE.Util.formatValidationMessage = function (errors) {
 	}
 	return formattedErrors;
 };
+
+CORE.Util.random = function (range) {
+	return Math.round(Math.random() * (range - 1)) + 1;
+}

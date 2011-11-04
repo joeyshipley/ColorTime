@@ -91,7 +91,9 @@
     <Compile Include="Infrastructure\StructureMapControllerActivator.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />
     <Compile Include="Models\ColorModelFactory.cs" />
+    <Compile Include="Models\ColorRoundChoiceModel.cs" />
     <Compile Include="Models\NewPlayerSetupModel.cs" />
+    <Compile Include="Models\NextColorRoundModel.cs" />
     <Compile Include="Models\PlayViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -170,7 +172,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50740</DevelopmentServerPort>
+          <DevelopmentServerPort>7309</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

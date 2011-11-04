@@ -1,4 +1,4 @@
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+﻿body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0}
 table{border-collapse:collapse;border-spacing:0}
 fieldset,img{border:0}
 address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}
@@ -44,8 +44,29 @@ HTML,BODY{background-image:url(../images/pattern_noise.png);background-position:
 .isDialog .content INPUT[type=text]{width:300px;height:2em;line-height:2em;font-size:1.3em;text-align:center}
 .isDialog .validationMessage{position:relative;display:block}
 .isDialog .actions{position:relative;display:block;margin:2em 0 0;text-align:right}
+.isDialog .actions.textcenter{text-align:center}
 .isDialog .actions .primaryAction{margin-right:.5em;font-size:1.3em;color:#5895db}
 .isDialog .actions .secondaryAction{color:#735573;font-size:.75em;text-decoration:none}
+.isDialog .actions .specialAction{margin:0 .75em;font-size:1.75em;color:#c84663}
+.isDialog .actions .specialAction.smaller{color:#999;font-size:1.3em}
 .isDialog .actions A:hover{text-decoration:underline}
 #homePage .scores H1{color:#735573}
-.no-boxshadow .uberLinks A{border:3px double #222}
+#colorGame .scoreBoard{position:relative;display:block}
+#colorGame .scoreBoard DIV{position:relative;display:inline-block;width:49%;margin-bottom:1em}
+#colorGame .scoreBoard LABEL{position:relative;display:block;font-weight:bold}
+#colorGame .scoreBoard .displayName{line-height:1.1em;font-size:4em}
+#colorGame .scoreBoard .score{line-height:1.1em;font-size:4em}
+#colorGame .pickThisColor{position:relative;display:block;margin-top:-55px}
+#colorGame .pickThisColor .message{position:relative;display:block;text-align:center;font-size:1.3em}
+#colorGame .pickThisColor #currentColor{position:relative;display:block;text-align:center;font-family:"Arial Black",Arial,sans-serif;font-size:4em;text-shadow:rgba(0,0,0,0.75) 0 0 1px;line-height:1em}
+#colorGame .colorCards{position:relative;display:block;margin-top:3em;text-align:center}
+#colorGame .colorCards DIV{position:relative;display:inline-block;margin:0 1%;width:30%;height:250px;border:1px solid #FFF;-moz-box-shadow:0 0 1px 1px rgba(0,0,0,0.5);-webkit-box-shadow:0 0 1px 1px rgba(0,0,0,0.5);box-shadow:0 0 1px 1px rgba(0,0,0,0.5);background-image:url(../images/pattern_noise.png);background-position:left top;background-repeat:repeat;cursor:pointer}
+#colorGame .colorCards DIV.Blue{background-color:blue}
+#colorGame .colorCards DIV.Green{background-color:green}
+#colorGame .colorCards DIV.Yellow{background-color:yellow}
+#colorGame .colorCards DIV.Orange{background-color:orange}
+#colorGame .colorCards DIV.Red{background-color:red}
+#colorGame .colorCards DIV.Purple{background-color:purple}
+#colorGame .colorCards DIV.invalid{cursor:default;background-color:#CFCFCF;border:1px solid #FFF;-moz-box-shadow:inset 0 0 1px 1px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0 0 1px 1px rgba(0,0,0,0.3);box-shadow:inset 0 0 1px 1px rgba(0,0,0,0.3)}
+.no-boxshadow .boxshadow{border:1px solid #666}
+.ui-dialog-titlebar-close{display:none}
